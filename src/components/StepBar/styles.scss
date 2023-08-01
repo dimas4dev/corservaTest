@@ -1,0 +1,47 @@
+.stepBar {
+    background-image: url("../../assets/images/StepBar/bg-sidebar-desktop.svg");
+    background-size: cover;
+    width: 270px;
+    height: 560px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+
+    .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+        color: #BEE2FD;
+
+        .css-117w1su-MuiStepIcon-text {
+            fill: #022959
+        }
+    }
+
+    .css-1hv8oq8-MuiStepLabel-label .Mui-active {
+        color: white;
+    }
+
+    .css-1hv8oq8-MuiStepLabel-label {
+        color: white;
+    }
+
+    .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+        color: white
+    }
+
+    .css-1hv8oq8-MuiStepLabel-label.Mui-completed {
+        color: white
+    }
+
+    .css-1hv8oq8-MuiStepLabel-label.Mui-active {
+        color: white
+    }
+
+    .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
+        color: white;
+
+        .css-117w1su-MuiStepIcon-text {
+            fill: #483EFF
+        }
+    }
+
+}
