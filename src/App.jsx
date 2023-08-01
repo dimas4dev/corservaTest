@@ -4,6 +4,7 @@ import { PersonalInformationForm } from './components/Information/index.jsx';
 
 import './App.scss'
 import { PlanSelection } from './components/Plan/index.jsx';
+import { AddOns } from './components/AddsOn/index.jsx';
 
 
 export default function App() {
@@ -11,7 +12,11 @@ export default function App() {
   const theme = createTheme({
     typography: {
       fontFamily: 'Ubuntu, sans-serif', // Aquí puedes especificar la fuente que desees
-    },
+      h1: {
+        fontSize: '32px',
+      }
+    }
+
   });
 
   return (
@@ -23,7 +28,8 @@ export default function App() {
           </div>
           <div className="app__content">
             {/* <PersonalInformationForm /> */}
-            <PlanSelection />
+            {/* <PlanSelection /> */}
+            {/* <AddOns /> */}
           </div>
         </div>
       </ThemeProvider>

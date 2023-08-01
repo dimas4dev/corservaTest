@@ -1,0 +1,21 @@
+.addons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.addons-title {
+    margin-bottom: 1rem;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+}
+
+.addons-description {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--grey, #9699AA);
+}

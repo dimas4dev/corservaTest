@@ -1,0 +1,53 @@
+// AddonCard.scss
+
+.addon-card {
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &.addon-selected {
+        border-color: #483eff; // Cambiar el color del borde cuando el addon esté seleccionado
+    }
+
+    .addon-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+
+        .addon-info {
+            display: flex;
+        }
+
+        .addon-check {
+            margin-right: 1rem;
+        }
+
+        .addon-name {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .addon-description {
+            font-size: 0.9rem;
+            color: var(--grey, #9699AA);
+        }
+
+        .addon-cost {
+            display: flex;
+            align-items: center;
+        }
+
+        .addon-checkbox {
+            margin-right: 1rem;
+        }
+
+        .addon-price {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+    }
+}
