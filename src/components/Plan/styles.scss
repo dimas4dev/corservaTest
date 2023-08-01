@@ -1,0 +1,101 @@
+.plan-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    height: 90%;
+
+    .plan-title {
+        margin-bottom: 1rem;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-align: center;
+    }
+
+    .plan-description {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--grey, #9699AA);
+    }
+}
+
+
+
+
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 180px;
+    max-width: 800px;
+    margin-bottom: 2rem;
+
+    .plan-card {
+        width: calc(33.33% - 1rem);
+        height: 100%;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border-color 0.3s ease;
+
+        &.selected {
+            border-color: #483EFF; // Aplicar borde azul a la tarjeta seleccionada
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            height: 100%;
+
+            .icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .card-icon {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-title {
+                font-size: 1rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-price {
+                font-size: 0.9rem;
+            }
+
+            .card-discount {
+                font-size: 12px;
+                color: var(--denim, #022959);
+            }
+        }
+    }
+}
+
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    border-radius: 8px;
+    background: var(--very-light-grey, #F8F9FF);
+    width: 100%;
+    height: 50px;
+
+    .switch-label {
+        margin-right: 1rem;
+    }
+}

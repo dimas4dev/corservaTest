@@ -23,43 +23,39 @@
         color: #9699AA;
     }
 
-}
-
-
-
-
-
-.form {
-    width: 100%;
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .input-group {
+    .form {
         width: 100%;
-        margin-bottom: 2rem;
+        max-width: 450px;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
-        .form-input {
-            height: 48px;
-            border-radius: 8px;
+        .input-group {
+            width: 100%;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+
+            .form-input {
+                height: 48px;
+                border-radius: 8px;
+            }
+
+            .form-alert {
+                color: red;
+                margin-top: 10px;
+                align-self: flex-end;
+            }
         }
 
-        .form-alert {
-            color: red;
-            margin-top: 10px;
+
+        .form-button {
+            margin-top: 2rem;
             align-self: flex-end;
+            border-radius: 8px;
+            background-color: #022959;
         }
-    }
 
-
-    .form-button {
-        margin-top: 2rem;
-        align-self: flex-end;
-        border-radius: 8px;
-        background-color: #022959;
     }
 
 }
