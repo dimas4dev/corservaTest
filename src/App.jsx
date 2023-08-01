@@ -5,6 +5,8 @@ import { PersonalInformationForm } from './components/Information/index.jsx';
 import './App.scss'
 import { PlanSelection } from './components/Plan/index.jsx';
 import { AddOns } from './components/AddsOn/index.jsx';
+import { Resume } from './components/Resume/index.jsx';
+import { compile } from 'sass';
 
 
 export default function App() {
@@ -14,6 +16,16 @@ export default function App() {
       fontFamily: 'Ubuntu, sans-serif', // Aquí puedes especificar la fuente que desees
       h1: {
         fontSize: '32px',
+        fontWeight: 700
+      }
+    },
+    components: {
+      MuiTableCell: {
+        styleOverrides: {
+          root: {
+            borderBottom: 'none'
+          }
+        }
       }
     }
 
@@ -30,6 +42,7 @@ export default function App() {
             {/* <PersonalInformationForm /> */}
             {/* <PlanSelection /> */}
             {/* <AddOns /> */}
+            <Resume />
           </div>
         </div>
       </ThemeProvider>
