@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Typography, TextField, Button, Container } from '@mui/material';
+import { useAppContext } from '../../Context/Context';
+
 import './styles.scss';
+import StepButton from '../StepButton';
 
 const PersonalInformationForm = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phoneNumber: '',
-    });
+
+    const { formData, setFormData } = useAppContext();
+
 
     const [touchedFields, setTouchedFields] = useState({
         name: false,
@@ -19,6 +20,7 @@ const PersonalInformationForm = () => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
     };
+
 
     const handleInputBlur = (event) => {
         const { name } = event.target;
@@ -33,10 +35,9 @@ const PersonalInformationForm = () => {
         );
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = () => {
         if (isFormValid()) {
-            console.log(formData);
+            setFormData({ ...formData, step: 2 });
         } else {
             alert('Por favor, complete todos los campos antes de enviar el formulario.');
         }
@@ -50,7 +51,7 @@ const PersonalInformationForm = () => {
             <Typography variant="body1" className="form-description">
                 Please provide your name, email address, and phone number.
             </Typography>
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="form">
                 <div className="input-group">
                     <TextField
                         label="Name"
@@ -107,14 +108,6 @@ const PersonalInformationForm = () => {
                         </Typography>
                     )}
                 </div>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className="form-button"
-                    type="submit"
-                >
-                    Next Step
-                </Button>
             </form>
         </Container>
     );

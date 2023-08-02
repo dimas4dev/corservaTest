@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
+import { useAppContext } from '../../Context/Context';
+
 import './styles.scss'
 
 const steps = [
@@ -28,18 +30,16 @@ const steps = [
         label: 'STEP 4',
         description: `SUMMARY`,
     },
+    {
+        label: 'STEP 5',
+        description: `CONGRATS`,
+    },
 ];
 
 const StepBar = () => {
     const [activeStep, setActiveStep] = React.useState(0);
 
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
-
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
+    const { formData } = useAppContext();
 
     const handleReset = () => {
         setActiveStep(0);
@@ -50,8 +50,8 @@ const StepBar = () => {
         <div className="stepBar">
 
             <Box>
-                <Stepper activeStep={activeStep} orientation="vertical" sx={{ color: "white" }}>
-                    {steps.map((step, index) => (
+                <Stepper activeStep={formData.step} orientation="vertical" sx={{ color: "white" }}>
+                    {steps.map((step) => (
                         <Step sx={{ color: "white" }} key={step.label}>
                             <StepLabel
                                 sx={{ color: "white" }}

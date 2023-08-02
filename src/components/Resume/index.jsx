@@ -1,9 +1,25 @@
 import React from 'react';
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Link } from '@mui/material';
+import { useAppContext } from '../../Context/Context';
 
 import './styles.scss';
 
-const Resume = (props) => {
+const Resume = () => {
+    const { formData, setFormData } = useAppContext();
+
+    const handleStepChange = () => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            step: 0,
+        }));
+    };
+
+    const totalPrice = () => {
+        const priceAddons = formData.addons.reduce((acc, addon) => acc + addon.price, 0);
+        const pricePlan = formData.pricePlan
+        return priceAddons + pricePlan;
+    }
+
 
 
     return (
@@ -19,32 +35,33 @@ const Resume = (props) => {
                 <Table>
                     <TableHead className='planResume'>
                         <TableRow className="planResume__left">
-                            <TableCell>Online service</TableCell>
-                            <TableCell id='change' >Change</TableCell>
+                            <TableCell>{formData.plan}</TableCell>
+                            <TableCell>
+                                <Link onClick={handleStepChange} className="change-link">Change</Link>
+                            </TableCell>
                         </TableRow>
                         <TableRow className="planResume__right">
-                            <TableCell align="right">$9/mo </TableCell>
+                            <TableCell align="right">{formData.planFrequency === 'Monthly' ? `$${formData.pricePlan}/mo` : `$${formData.pricePlan}/yr`}</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        <TableRow>
-                            <TableCell>Online service</TableCell>
-                            <TableCell align="right">+ $1/mo</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Larger storage</TableCell>
-                            <TableCell align="right">+ $2/mo</TableCell>
-                        </TableRow>
+
+                        {formData.addons.map((addon, index) => (
+                            <TableRow key={index}>
+                                <TableCell>{addon.name}</TableCell>
+                                <TableCell align="right">{formData.planFrequency === 'Monthly' ? `$${addon.price}/mo` : `$${addon.price}/yr`}</TableCell>
+                            </TableRow>
+                        ))}
                     </TableBody>
                 </Table>
             </TableContainer>
 
             <div className="footer">
                 <Typography variant="body1" className="footer__left">
-                    Total (per month)
+                    Total {formData.planFrequency === 'Monthly' ? '(per month)' : '(per year)'}
                 </Typography>
                 <Typography variant="body1" className="footer__right">
-                    + $12/mo
+                    {formData.planFrequency === 'Monthly' ? `$${totalPrice()}/mo` : `$${totalPrice()}/yr`}
                 </Typography>
             </div>
         </div>

@@ -3,44 +3,63 @@ import { Typography, Card, CardContent, Switch, Container } from '@mui/material'
 import Advanced from '../../assets/images/Plan/advanced.svg';
 import Arcade from '../../assets/images/Plan/arcade.svg';
 import Pro from '../../assets/images/Plan/pro.svg';
+import { useAppContext } from '../../Context/Context';
+
 import './styles.scss';
 
 const PlanSelection = () => {
     const [selectedPlan, setSelectedPlan] = useState('Monthly');
     const [selectedCard, setSelectedCard] = useState(null);
+    const { formData, setFormData } = useAppContext();
 
     const handlePlanChange = () => {
-        setSelectedPlan(selectedPlan === 'Monthly' ? 'Yearly' : 'Monthly');
-        setSelectedCard(null); // Deseleccionar cualquier tarjeta previamente seleccionada al cambiar el plan
+        setSelectedPlan((prevSelectedPlan) => {
+            setSelectedCard(null);
+            const pricePlan = selectedCard ? (prevSelectedPlan === 'Monthly' ? selectedCard.priceMonthly : selectedCard.priceYearly) : '';
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                planFrequency: prevSelectedPlan === 'Monthly' ? 'Yearly' : 'Monthly',
+                pricePlan,
+            }));
+            return prevSelectedPlan === 'Monthly' ? 'Yearly' : 'Monthly';
+        });
     };
 
     const arrayCards = [
         {
             icon: Arcade,
             title: 'Arcade',
-            priceMonthly: '$9/mo',
-            priceYearly: '$90/yr',
+            priceMonthly: 9,
+            priceYearly: 90,
             discount: '2 months free',
         },
         {
             icon: Advanced,
             title: 'Advanced',
-            priceMonthly: '$12/mo',
-            priceYearly: '$120/yr',
+            priceMonthly: 12,
+            priceYearly: 120,
             discount: '2 months free',
         },
         {
             icon: Pro,
             title: 'Pro',
-            priceMonthly: '$15/mo',
-            priceYearly: '$150/yr',
+            priceMonthly: 15,
+            priceYearly: 150,
             discount: '2 months free',
         },
     ];
 
     const handleCardClick = (index) => {
         setSelectedCard(arrayCards[index]);
+        const pricePlan = selectedPlan === 'Monthly' ? arrayCards[index].priceMonthly : arrayCards[index].priceYearly;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            plan: arrayCards[index].title,
+            pricePlan,
+        }));
     };
+
+
 
     return (
         <Container className="plan-container">
@@ -64,7 +83,7 @@ const PlanSelection = () => {
                                 {card.title}
                             </Typography>
                             <Typography variant="body2" className="card-price">
-                                {selectedPlan === 'Yearly' ? card.priceYearly : card.priceMonthly}
+                                {selectedPlan === 'Yearly' ? `$${card.priceYearly}/yr` : `$${card.priceMonthly}/mo`}
                             </Typography>
                             <Typography variant="body2" className="card-discount">
                                 {selectedPlan === 'Yearly' ? card.discount : ''}
